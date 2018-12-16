@@ -1,0 +1,6 @@
+# Persistence directories
+mysql-data
+# Dependency directories
+node_modules
+
+containers/react-frontend/build

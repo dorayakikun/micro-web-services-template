@@ -1,0 +1,43 @@
+version: '3'
+services:
+  react-frontend:
+    image: node:lts-slim
+    command: bash -c "npm install && npm run start"
+    volumes:
+      - ./containers/react-frontend:/front
+    working_dir: /front
+    ports: 
+      - "3000:3000"
+    links:
+      - node-api-server
+  node-api-server:
+    image: node:lts-slim
+    command: bash -c "npm install && npm run start"
+    volumes:
+      - ./containers/node-api-server:/src
+    working_dir: /src
+    expose:
+      - "9000"
+    ports: 
+      - "9000:9000"
+    links:
+      - mysql
+    environment: 
+      - MYSQL_DB_NAME=app
+      - MYSQL_ROOT_USER=root
+      - MYSQL_ROOT_PASSWORD=root
+  mysql:
+    build:
+      context: ./containers/mysql
+    volumes:
+      - ./containers/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./containers/mysql/sqls:/docker-entrypoint-initdb.d
+      - ./mysql-data:/var/lib/mysql
+    ports: 
+      - "3306:3306"
+    expose:
+      - "3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - LANG=ja_JP.UTF-8
+      - TZ=Asia/Tokyo
