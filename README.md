@@ -1,6 +1,6 @@
 # micro-web-services-template
 
-日本語は [こちら](#Japanese)
+日本語は [こちら](#Japanese)
 
 This repository was created under the inspired by [this site](https://qiita.com/shibukawa/items/fd49f98736045789ffc3).
 
