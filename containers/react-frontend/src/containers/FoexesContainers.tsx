@@ -1,8 +1,8 @@
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import { Action, fetchBegin } from "../actions/foxes"
+import { Action, fetchBegin } from "../actions/foxes";
 import { Foxes } from "../components/Foxes";
-import { State } from "../reducers"
+import { State } from "../reducers";
 
 const mapStateToProps = (state: State) => ({
   ...state.foxes
@@ -10,9 +10,9 @@ const mapStateToProps = (state: State) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
   onLoad: () => {
-    dispatch(fetchBegin())
+    dispatch(fetchBegin());
   }
-})
+});
 
 const connector = connect(
   mapStateToProps,

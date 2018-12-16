@@ -4,7 +4,7 @@ import { FoxViewModel } from "../components/Foxes";
 export interface State {
   isLoading: boolean;
   isLoaded: boolean;
-  foxes: FoxViewModel[]
+  foxes: FoxViewModel[];
   error?: Error;
 }
 
@@ -13,10 +13,10 @@ export const initialState: State = {
   isLoaded: false,
   foxes: [],
   error: undefined
-}
+};
 
 export const reducer = (state: State = initialState, action: Action) => {
-  switch(action.type) {
+  switch (action.type) {
     case ActionKeys.FETCH_BIGIN:
       return {
         ...state,
