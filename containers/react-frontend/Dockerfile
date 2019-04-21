@@ -5,8 +5,8 @@ WORKDIR /work
 #    && apt-get clean
 #RUN npm install -g node-gyp
 ADD package.json .
-ADD package-lock.json .
-RUN npm ci
+ADD yarn.lock .
+RUN yarn install --frozen-lockfile
 ADD tsconfig.json .
 ADD src src
 ADD public public
