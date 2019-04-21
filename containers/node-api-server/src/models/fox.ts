@@ -1,40 +1,32 @@
-import * as Sequelize from "sequelize";
+import { Model, INTEGER, STRING } from "sequelize";
 import { sequelize } from "../db/sequelize";
+export class Fox extends Model {
+  public readonly id!: number;
+  public readonly name!: number;
+  public readonly scientificName!: number;
 
-export interface FoxAddModel {
-  id: number;
-  name: string;
-  scientificName: string;
+  public readonly createdAt!: Date;
+  public readonly updatedAt!: Date;
 }
 
-export interface FoxModel extends Sequelize.Model<FoxModel, FoxAddModel> {
-  id: number;
-  name: string;
-  scientificName: string;
-  createdAt: string;
-  updatedAt: string;
-}
-
-export interface FoxViewModel {
-  name: string;
-  scientificName: string;
-}
-
-export const Fox = sequelize.define<FoxModel, FoxAddModel>(
-  "fox",
+Fox.init(
   {
     id: {
-      type: Sequelize.INTEGER,
+      type: INTEGER,
       autoIncrement: true,
       primaryKey: true
     },
-    name: Sequelize.STRING,
+    name: STRING,
     scientificName: {
-      type: Sequelize.STRING,
+      type: STRING,
       field: "scientific_name"
     }
   },
   {
-    underscored: true
+    sequelize,
+    tableName: 'fox',
+    underscored: true,
   }
 );
+
+export const FoxAccessor = Fox

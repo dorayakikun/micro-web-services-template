@@ -1,11 +1,11 @@
 import * as Bluebird from "bluebird";
-import { Fox, FoxViewModel } from "../models/fox";
+import { FoxAccessor, Fox } from "../models/fox";
 
 export class FoxService {
-  findById(id: number): Bluebird<FoxViewModel | null> {
-    return Fox.findById<FoxViewModel>(id);
+  findById(id: number): Bluebird<Fox | null> {
+    return FoxAccessor.findByPk(id);
   }
-  findLimit5(): Bluebird<FoxViewModel[]> {
-    return Fox.findAll<FoxViewModel[]>({ limit: 5 });
+  findLimit5(): Bluebird<Fox[]> {
+    return FoxAccessor.findAll({ limit: 5 });
   }
 }

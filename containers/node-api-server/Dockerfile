@@ -5,16 +5,16 @@ WORKDIR /work
 #    && apt-get clean
 #RUN npm install -g node-gyp
 ADD package.json .
-ADD package-lock.json .
-RUN npm ci
+ADD yarn.lock .
+RUN yarn install --frozen-lockfile
 ADD tsconfig.json .
 ADD src src
-RUN npm run build
+RUN yarn build
 
 FROM node:lts-alpine as runner
 COPY --from=builder /work/dist dist
 ADD package.json .
-ADD package-lock.json .
-RUN npm ci --production
+ADD yarn.lock .
+RUN yarn install --frozen-lockfile
 EXPOSE 9000
 ENTRYPOINT ["node", "dist/server.js"]
