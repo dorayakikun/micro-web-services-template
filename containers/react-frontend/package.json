@@ -15,7 +15,7 @@
     "react-scripts": "^3.0.0",
     "redux": "^4.0.1",
     "redux-saga": "^1.0.0",
-    "typescript": "3.5.2"
+    "typescript": "3.5.3"
   },
   "devDependencies": {
     "eslint-config-prettier": "^6.0.0",
